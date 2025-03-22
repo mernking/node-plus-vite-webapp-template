@@ -16,12 +16,9 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 // Routes
-const gistRoutes = require("./routes/gistRoutes");
 const cloudinaryRoutes = require("./routes/cloudinaryRoutes");
 const authRoutes = require("./routes/authRoutes");
-const widgetRoutes = require("./routes/widgetRoutes");
 const googleRoutes = require("./routes/googleAuth");
-const chatRoutes = require("./services/socket");
 
 // Use the middleware
 app.use(requestLogger);
@@ -39,7 +36,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 // API route
 app.get("/api", (req, res) => {
